@@ -1,0 +1,27 @@
+@author: zhangbin
+@date:  2015/12/03
+
+配置kingsoft文档转换服务
+    1. 运行环境:
+        yum install qt4-devel
+        安装 wps.rpm 到/opt/kingsoft
+        pip install django1.6
+        pip install poster
+
+    2. 运行 服务：
+        bash file_convert/start.sh
+
+    3. 客户端配置：
+        修改settings.py 的 wps_url 项目为对应的转换服务地址
+
+ssh启用和关闭：
+    bash /opt/scripts/ssl_enable.sh
+    bash /opt/scripts/ssl_disable.sh
+
+中间件授权:
+   1. 启动docker容器(第一次运行)
+       docker run --name lemon $DEAMON -it -v $pwd:/opt -p 25432:5432 -p 20080:80 lemon:0.1.3 /bin/bash
+   2. python / opt/lemon/libs/fa64/getAuth.py  获得机器标示
+   3. 生成授权文件，并将其更名放置在 /opt/lemon/etc/serverlicense
+   4. 修改 /opt/lemon/model/django/lemon/settings.py 的FA="true" ,并且确定证书密码都为"123456"
+   5. 启动 bash /run/start.sh

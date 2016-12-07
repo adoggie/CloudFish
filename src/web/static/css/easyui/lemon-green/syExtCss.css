@@ -1,0 +1,284 @@
+.search-div{
+    line-height: 43px;
+    height: 43px;
+    font-size: 18px;
+    color: #057954;
+}
+
+.table-div{
+    border: 1px solid #b9ccc6;
+    border-top: 2px solid #057954;
+    margin-bottom: 10px;
+    box-shadow: #CCCCCC 1px 1px 1px 1px;
+}
+
+.table {
+    width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+    background-color: #fbfbfb;
+}
+
+.table th,.table td {
+    padding: 5px;
+    text-align: left;
+    border: 0;
+}
+
+.table th {
+	background: #F8F8F8;
+	text-align: right;
+}
+
+.table thead th {
+	text-align: center;
+}
+
+.table tbody th {
+	text-align: right;
+}
+
+.table tr:hover {
+	background-color: #f6fafd;
+}
+
+.table td:hover {
+	background-color: #f9feff;
+}
+
+.form th {
+	text-align: right;
+}
+
+.form th,.form td {
+	padding: 4px;
+	border: 0px solid #D1D7DC;
+}
+
+.form input,.form select,.form textarea {
+	width: 150px;
+}
+
+.form input[type='checkbox'],.form input[type='radio'] {
+	width: 20px;
+}
+
+fieldset {
+	border: 1px dotted #D1D7DC;
+}
+
+legend {
+	border: 1px dotted #D1D7DC;
+	font-size: small;
+}
+
+.indexfooter{
+	font-family: '微软雅黑', serif;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+.indexTop{
+	font-family: '微软雅黑', serif;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.index-menu-icon>a>span {
+	line-height: 26px;
+	padding-left: 2px;
+	color: #FFFFFF;
+}
+
+.index-menu-icon>a>span>span.l-btn-text {
+	line-height: 26px;
+	font-size: 16px;
+	font-family: '微软雅黑', serif;
+	margin-left: 31px;
+}
+
+.index-menu-icon>a>span>span.l-btn-icon {
+	width: 27px;
+	height: 26px;
+	line-height: 26px;
+	top: 0;
+	margin-top: 2px;
+}
+
+.index-menu-icon>a>span>span.m-btn-downarrow {
+	margin-right: 3px;
+	background: url("../icons/menu_write_arrows.png") no-repeat scroll 0 center rgba(0, 0, 0, 0);
+}
+
+.index-menu-icon>a.m-btn-plain-active,
+.s-btn-plain-active {
+	border-color: #0a523b;
+	background-color: #0a523b;
+	color: #000000;
+}
+
+.index-menu-icon>a:hover {
+	border-color: #0a523b;
+	background-color: #0a523b;
+	color: #000000;
+}
+
+.index-menu-icon.menu{
+	background-color:#0f8b7e;
+	border-color: #0f8b7e;
+	color:#FFFFFF;
+	font-size: 16px;
+	font-family: '微软雅黑', serif;
+}
+
+.index-menu-icon>div.menu-item{
+	border: 0px;
+	border-color: #0f8b7e;
+	_border-color: #0f8b7e;
+	font-size: 16px;
+	font-family: '微软雅黑', serif;
+}
+
+.index-menu-icon>div.menu-active {
+	border-color: #035b52;
+	color: #FFFFFF;
+	background: #035b52;
+}
+
+.index-menu-icon>div.menu-line {
+	border: 0px;
+}
+
+body{
+	font-family: 微软雅黑;
+
+}
+
+a:link {
+	text-decoration:none;
+}
+a:visited {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:none;
+}
+a:active {
+	text-decoration:none;
+}
+
+.index-report-font{
+	font-size: 72px;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Arial;
+}
+
+.send-again-mouse-over{
+	background: url("../lemon-green/images/send-again-mouse-out.png") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.send-again-mouse-on{
+	background: url("../lemon-green/images/send-again-mouse-on.png") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.delete-mouse-over{
+	background: url("../lemon-green/images/delete-mouse-over.png") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.delete-mouse-on{
+	background: url("../lemon-green/images/delete-mouse-on.png") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.update-mouse-over{
+	background: url("../lemon-green/images/update-mouse-over.png") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.update-mouse-on{
+	background: url("../lemon-green/images/update-mouse-on.png") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.up-mouse-over{
+    background: url("../lemon-green/images/up-mouse-over.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.up-mouse-on{
+    background: url("../lemon-green/images/up-mouse-on.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.down-mouse-over{
+    background: url("../lemon-green/images/down-mouse-over.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.down-mouse-on{
+    background: url("../lemon-green/images/down-mouse-on.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+
+.collection-mouse-over{
+    background: url("../lemon-green/images/collection-mouse-over.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.collection-mouse-on{
+    background: url("../lemon-green/images/collection-mouse-on.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.share-mouse-over{
+    background: url("../lemon-green/images/share-mouse-over.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.share-mouse-on{
+    background: url("../lemon-green/images/share-mouse-on.png") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.span-textarea{
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
+}
+
+.div-textarea {
+    display:block;word-break: break-all;word-wrap: break-word;
+}
+
+.file-delete-over{
+    background: url("../lemon-green/images/file-delete-over.jpg") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.file-delete-on{
+    background: url("../lemon-green/images/file-delete-on.jpg") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.file-search-over{
+    background: url("../lemon-green/images/file-search-over.jpg") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.file-search-on{
+    background: url("../lemon-green/images/file-search-on.jpg") no-repeat center center;
+    border: 0px;width: 32px;height: 16px;
+}
+
+.file-download-over{
+	background: url("../lemon-green/images/file-download-over.jpg") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}
+
+.file-download-on{
+	background: url("../lemon-green/images/file-download-on.jpg") no-repeat center center;
+	border: 0px;width: 32px;height: 16px;
+}

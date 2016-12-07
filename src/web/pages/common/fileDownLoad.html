@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/common/fileSelect.js" ></script>
+    <!-- 部门选择-->
+    <title>选择文件</title>
+</head>
+<body class="easyui-layout" >
+    <div data-options="region:'center'" style="padding: 10px;">
+        <!--TODO 树 -->
+        <ul id="fileTree"></ul>
+    </div>
+    <div data-options="region:'south'" style=" padding: 10px;">
+        文件名<input id="file_name" class="easyui-textbox" style="width: 100px" />
+        <a href="#" class="easyui-linkbutton" style="width: 58px" onclick="selectFile()" >下载</a>
+        <a href="#" class="easyui-linkbutton" style="width: 58px" onclick="closeWindow()" >关闭</a>
+    </div>
+</body>
+</html>

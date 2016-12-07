@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/secAdmin/appServerManage.js" charset="utf-8"></script>
+
+    <title>服务器授权管理</title>
+</head>
+<body class="easyui-layout" >
+<div data-options="region:'center',border:false" style="width: 100%;"  >
+    <div id="toolbar" style="padding:0;margin: 0;">
+        <div class="search-div">
+            <span>查询</span>
+        </div>
+        <div class="table-div">
+            <table class="table" style="width: 100%">
+                <tr>
+                    <th style="width: 152px">服务器名称：</th>
+                    <td ><input class="easyui-textbox" id="name" /></td>
+
+                    <td style="text-align: right">
+                        <a href="#" class="easyui-linkbutton" onclick="searchAppServerList()"  style="width: 58px">查询</a>
+                        <a href="#" class="easyui-linkbutton" onclick="openAddAppServerWindow()" >添加应用服务器</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="search-div" style="margin-bottom: 10px">
+            <table class="table">
+                <tr>
+                    <td style="padding-left: 0px">
+                            <span>
+                                信息列表
+                            </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="margin-left: 10px;margin-right: 10px;height: 100%;">
+        <table id="appServerList" style="height: 100%" >
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

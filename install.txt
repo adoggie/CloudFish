@@ -1,0 +1,66 @@
+
+CloudFish
+系统安装配置
+-----------------
+author: zhangbin
+date :  2016.12.06 
+-----------------
+
+**centos7+, python2.7+
+ 
+1. 数据库配置 (pgsql) 
+
+  yum install -y postgresql-server
+  service postgresql initdb 
+  modify files:  
+     /var/lib/pgsql/data/pg_hba.conf
+     /var/lib/pgsql/data/postgresql.conf
+  service postgresql restart 
+  
+  创建数据库和密码: cloudfish , 111111
+    su - postgres
+    psql
+      alter user postgres with password '111111';
+      create database cloudfish;
+
+2. python (must be 2.7+)
+  pip install -r ./requirements.txt 
+  python model/django/manage.py syncdb
+  mkdir -p /home/tmp
+
+3. 修改配置文件
+
+   “etc/settings.yml” 
+     cloudfish_server::http::host 
+     cloudfish_server::http::port
+     cloudfish_server::swfit_auth_server 
+     cloudfish_server::swift_tenant_name
+     cloudfish_server::swift_username
+     cloudfish_server::swift_password
+
+   "model/django/project/settings.py"
+     DATABASES::HOST 
+
+4.  start server 
+    cd service
+    python server.py 
+
+5. 管理配置
+   登陆 http://localhost:8088 
+   user:  sysadmin/111111
+   添加新的应用，设置 应用名称，标示，选择“保存”，查看生成的“令牌”和“口令”。
+   将 “令牌”和“口令”告知使用客户以便访问系统 
+   
+6. swift配置
+   在数据库表 core_application中，字段 container_name默认为空，填写为 test-app
+   登录openstack系统，在ObjectStorage栏目中创建名称为"test-app"的container
+
+7. 测试 
+   test/*.py
+
+ 
+  
+  
+  
+  
+

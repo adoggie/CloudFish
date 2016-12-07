@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN" manifest="cache.manifest">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>统一文件存储服务系统</title>
+</head>
+
+<!-- Bootstrap -->
+<link href="/static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="/static/css/bootstrap/bootstrap-theme.min.css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/js/common/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/js/bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/easyui/lemon-green/login.css">
+<style>
+    body{
+        background-color: #76b3bc;
+
+    }
+
+    a:not(.btn) {
+        color: #00699E;
+        transition: all 300ms ease 0s;
+    }
+    a:hover:not(.btn), a:active:not(.btn) {
+        color: #9E0000;
+        text-decoration: none;
+        transform: translateY(-8px);
+    }
+    .carousel{margin-bottom: 60px;}
+    .carousel .container{position: relative; z-index: 9;}
+    .carousel-control{vertical-align: middle; margin-top: 0; font-size: 120px; text-shadow: 0 1px 1px rgba(0,0,0,.4);
+        background-color: transparent; border: 0; z-index: 10;}
+    .carousel .item{height: 500px;}
+    .container-login{width:396px; height:399px;position: absolute; left:38%; top:180px; z-index:99;
+        background: url('static/css/easyui/lemon-green/login/login-1.png') no-repeat;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead{margin: 0; line-height: 1.25; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.4);}
+    .carousel-caption .btn{margin-top: 10px;}
+    .container-title{width:500px; height:90px;position: absolute; left:28%; top:50px; z-index:99}
+</style>
+<script>
+
+    var sy = {};
+    sy.data={
+        url:''
+    };
+
+    $(function() {
+        refurshImg();
+    });
+
+    $(document).keyup(function (evnet) {
+        if (evnet.keyCode == '13') {
+            login();
+        }
+    });
+
+    function refurshImg(){
+        $.ajax({
+            type: "post",
+            url: sy.data.url+"/webapi/admin/getSignImage/",
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 0) {
+                    $('#code').prop('src','data:imge/png;base64,'+data.result);
+                } else {
+                    var message = '错误代码:' + data.errcode + ',错误信息' + data.errmsg + '!';
+                    alert('查询错误:'+ message);
+                }
+            }
+        });
+    }
+
+    function login(){
+        var name = $("#user_name").val();
+        var password = $("#password").val();
+        var v_code = $("#v_code").val();
+        if(name==null|| $.trim(name)==""){
+            alert("账号不能为空");
+            return;
+        }
+        if(password==null|| $.trim(password)==""){
+            alert("密码不能为空");
+            return;
+        }
+        if(v_code==null|| $.trim(v_code)==""){
+            alert("验证码不能为空");
+            return;
+        }
+        if(name.length>30){
+            alert("账号不能超过30个字符");
+            return;
+        }
+        if(password.length>30){
+            alert("密码不能超过30个字符");
+            return;
+        }
+        if(v_code.length>4){
+            alert("验证码不能超过4个字符");
+            return;
+        }
+        $.ajax({
+            type: "post",
+            url: sy.data.url+"/webapi/admin/login/",
+            data:{
+                user:name,
+                password:password,
+                signcode:v_code
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 0) {
+                    window.location.href='adminIndex.html';
+                } else {
+                    var message = '错误代码:' + data.errcode + ',错误信息' + data.errmsg + '!';
+                    alert('登录失败:'+ message);
+                    refurshImg();
+                }
+            }
+        });
+    }
+</script>
+<body>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" >
+    <!-- Carousel items -->
+    <div class="carousel-inner" role="listbox" >
+
+        </div>
+</div>
+<div class="container-title">
+    <img src="static/css/easyui/lemon-green/login/adminLogin.png">
+</div>
+<div class="container-login">
+    <form class="form-signin">
+
+        <table border="0" style="width: 100%;margin-top: 160px;padding-bottom: 4px">
+
+            <tr>
+                <td style="width: 149px;text-align: right"><h4>账号:&nbsp;&nbsp;&nbsp;</h4></span></td>
+                <td style="width: 250px"><input type="text" id="user_name" class="input-block-level" placeholder="账号"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right"><h4>密码:&nbsp;&nbsp;&nbsp;</h4></td>
+                <td><input type="password" id="password" class="input-block-level" placeholder="密码"></td>
+            </tr>
+            <tr>
+                <td style="text-align: right"><h4>验证码:&nbsp;&nbsp;&nbsp;</h4></td>
+                <td>
+                    <input type="text" id="v_code" style="width: 50px" class="input-block-level" placeholder="验证码">
+                    <img id="code" onclick="refurshImg()" />
+
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="btn btn-large btn-primary" type="button" onclick="login()">登录</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

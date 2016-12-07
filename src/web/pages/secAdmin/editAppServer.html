@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/secAdmin/editAppServer.js" charset="utf-8"></script>
+    <title>应用服务器信息</title>
+</head>
+<body>
+<form id="addLogAdmin" method="get" class="form">
+    <table class="table" style="width: 100%;height: 100%">
+        <tr>
+            <th>服务器名称：</th>
+            <td>
+                <input id="name" class="easyui-textbox" style="width: 160px" data-options="required:true,validType:['length[4,20]'],invalidMessage:'服务器名称须在3和21之间！' " />
+            </td>
+            <th>IP：</th>
+            <td>
+                <input id="ip_addr" class="easyui-textbox" style="width: 160px"  data-options="required:true,validType:['checkIp'] "  />
+            </td>
+        </tr>
+        <tr>
+            <th>关联应用：</th>
+            <td>
+                <input id="app_id" class="easyui-combobox" style="width:120px" data-options="required:true,valueField:'id',textField:'name',panelHeight:'80px',editable:false" />
+            </td>
+            <th>是否启用IP地址受限：</th>
+            <td>
+                <input type="radio" value="1" name="is_addr_restricted" checked="checked">启用
+                <input type="radio" value="2" name="is_addr_restricted" >禁用
+
+            </td>
+        </tr>
+        <tr>
+
+            <th>是否启用：</th>
+            <td colspan="3">
+                <input type="radio" value="1" name="status" checked="checked">启用
+                <input type="radio" value="2" name="status" >禁用
+
+            </td>
+        </tr>
+        <tr>
+
+            <th>访问令牌：</th>
+            <td colspan="3">
+                <span id="access_token"></span>
+
+            </td>
+        </tr>
+        <tr>
+
+            <th>访问口令：</th>
+            <td colspan="3">
+                <span id="secret_key"></span>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: right">
+                <a href="#" class="easyui-linkbutton" style="width: 58px;"  onclick="saveApp()" >保存</a>
+                <a href="#" class="easyui-linkbutton" style="width: 58px"  onclick="closeWindow()" >关闭</a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

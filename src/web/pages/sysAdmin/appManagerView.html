@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="../../static/js/common/jquery.form.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/js/pages/sysAdmin/appManagerView.js" charset="utf-8"></script>
+
+    <title>应用管理</title>
+</head>
+<body class="easyui-layout" >
+<div data-options="region:'center',border:false" style="width: 100%;"  >
+    <div id="toolbar" style="padding:0;margin: 0;">
+        <div class="search-div">
+            <span>查询</span>
+        </div>
+        <div class="table-div">
+            <table class="table" style="width: 100%">
+                <tr>
+                    <th>应用名称：</th>
+                    <td><input class="easyui-textbox" id="name" /></td>
+                    <th>应用状态：</th>
+                    <td>
+                        <select id="status" class="easyui-combobox" style="width: 100px" data-options="panelHeight:'auto',editable:false" >
+                            <option value="" >--所有--</option>
+                            <option value="1" >启用</option>
+                            <option value="2" >禁用</option>
+                        </select>
+                    </td>
+                    <td style="text-align: right">
+                        <a href="#" class="easyui-linkbutton" onclick="searchAppList()"  style="width: 58px">查询</a>
+                        <a href="#" class="easyui-linkbutton" onclick="openAppEditWindow()" >添加应用</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="search-div" style="margin-bottom: 10px">
+            <table class="table">
+                <tr>
+                    <td style="padding-left: 0px">
+                            <span>
+                                信息列表
+                            </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="margin-left: 10px;margin-right: 10px;height: 100%;">
+        <table id="appList" style="height: 100%" >
+
+        </table>
+    </div>
+</div>
+<div id="importCertWindow" class="easyui-window" title="证书导入" data-options="closed:true,collapsible:false,minimizable:false,maximizable:false,modal:true"  style="width:400px;height:140px;padding:10px;">
+    <form id="addForm" method="post" enctype="multipart/form-data" >
+        <table>
+            <tr>
+                <th >导入证书：</th>
+                <td >
+                    <input type="file" id="file"  name="file" multiple="multiple" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right">
+                    <a id="upload"  href="#" class="easyui-linkbutton" onclick="uploadCert()"  >上传证书</a>
+                    <a href="#" class="easyui-linkbutton" style="width: 58px"  onclick="closeWindow()" >关闭</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

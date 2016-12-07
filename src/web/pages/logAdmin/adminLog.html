@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/logAdmin/adminLog.js" ></script>
+    <title>管理员日志</title>
+</head>
+<body class="easyui-layout">
+
+<div data-options="region:'center'" style="width: 50%" >
+    <div id="adminLog_toolbar" style="text-align: right;padding:0;margin: 0">
+        <table class="table" style="width: 100%">
+            <tr>
+                <th>开始时间：</th>
+                <td><input id="start_time" type="text" class="easyui-datebox" data-options="editable:false,buttons:sy.databoxbtn" style="width:180px;"/></td>
+                <th>结束时间：</th>
+                <td><input id="end_time" type="text" class="easyui-datebox" data-options="editable:false,buttons:sy.databoxbtn" style="width:180px;"/></td>
+                <th>操作对象：</th>
+                <td><input id="target" class="easyui-textbox" style="width:180px;"/></td>
+                <th>日志类型：</th>
+                <td>
+                    <a href="#" onclick="showAdminLogTypeWindow()">选择</a>
+                </td>
+            </tr>
+            <tr>
+                <th>操作人角色：</th>
+                <td>
+                    <select id="user_role" class="easyui-combobox" style="width:100px;" data-options="panelHeight:'auto',editable:false">
+                        <option value="">全部</option>
+                        <option value="1">系统管理员</option>
+                        <!--<option value="2">安全保密管理员</option>-->
+                        <!--<option value="4">安全审计管理员</option>-->
+                    </select>
+                </td>
+                <th>操作结果：</th>
+                <td>
+                    <select id="result" class="easyui-combobox" style="width: 100px" data-options="panelHeight:'auto',editable:false" >
+                        <option value="" >--所有--</option>
+                        <option value="0" >成功</option>
+                        <option value="1" >失败</option>
+                    </select>
+                </td>
+
+                <th>日志内容：</th>
+                <td colspan="3" >
+                    <input id="detail" class="easyui-textbox" />
+                    <a href="#" class="easyui-linkbutton" onclick="searchAdminLog()">查询</a>
+                    <a href="#" class="easyui-linkbutton" onclick="exportAdminOperationLog()">导出日志</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table id="adminLog" style="height: 70%">
+
+    </table>
+</div>
+<div id="adminLogTypeWindow" title="日志类型" class="easyui-window" data-options="iconCls:'',modal:true,collapsible:false,minimizable:false,maximizable:false,resizable:false,draggable:true,closable:true,closed:true"
+     style="width: 400px;height: 160px" >
+    <table>
+        <tr>
+            <td>
+                <input id="Login" name="adminLog" value="1" type="checkbox"/>
+                <a>管理员登录</a>
+            </td>
+            <td>
+                <input id="Logout" name="adminLog" value="2" type="checkbox"/>
+                <a>管理员注销</a>
+            </td>
+            <td>
+                <input id="ChangePassword" name="adminLog" value="3" type="checkbox"/>
+                <a>修改密码</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="CreateApplicate" name="adminLog" value="11" type="checkbox"/>
+                <a>创建应用</a>
+            </td>
+            <td>
+                <input id="UpdateApplicate" name="adminLog" value="12" type="checkbox"/>
+                <a>修改应用</a>
+            </td>
+            <td>
+                <input id="EnableApplicate" name="adminLog" value="14" type="checkbox"/>
+                <a>启用应用</a>
+            </td>
+            <td>
+                <input id="DisableApplicate" name="adminLog" value="15" type="checkbox"/>
+                <a>禁用应用</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="CreateAppUser" name="adminLog" value="51" type="checkbox"/>
+                <a>创建账号</a>
+            </td>
+            <td>
+                <input id="UpdateAppUser" name="adminLog" value="57" type="checkbox"/>
+                <a>修改账号</a>
+            </td>
+            <td>
+                <input id="EnableAppUser" name="adminLog" value="53" type="checkbox"/>
+                <a>启用账号</a>
+            </td>
+            <td>
+                <input id="DiableAppUser" name="adminLog" value="54" type="checkbox"/>
+                <a>禁用账号</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: right">
+                <a href="#" class="easyui-linkbutton" onclick="closeAdminLogTypeWindow()" style="width: 58px">确定</a>
+                <a href="#" class="easyui-linkbutton" onclick="clearAdminLogType()" style="width: 58px">重置</a>
+                <!--<a href="#" class="easyui-linkbutton" onclick="selectAdminLogType()" data-options="iconCls:'icon-search'">全选</a>-->
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

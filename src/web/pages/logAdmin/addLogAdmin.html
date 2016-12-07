@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/logAdmin/addLogAdmin.js" ></script>
+    <title>添加保密管理员</title>
+</head>
+<body>
+<form id="addLogAdmin" method="get" class="form">
+    <table class="table" style="width: 100%;height: 100%">
+        <tr>
+            <th>用户名：</th>
+            <td>
+                <input id="loginName" class="easyui-textbox" style="width: 160px" data-options="required:true,validType:['length[4,20]'],invalidMessage:'登录名须在3和21之间！' " />
+            </td>
+            <th id="th_passWord">密码：</th>
+            <td>
+                <span id="span_passWord">
+                <input id="passWord" class="easyui-textbox" style="width: 160px" type="password" data-options="required:true,validType:['length[4,20]'],invalidMessage:'登录名须在3和21之间！' "/>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th>单位：</th>
+            <td>
+                <input id="unitName" class="easyui-textbox" style="width: 160px" readonly="false"/>
+            </td>
+            <th>姓名：</th>
+            <td>
+                <input id="userName" class="easyui-textbox" style="width: 160px" data-options="required:true,validType:['length[2,20]'],invalidMessage:'登录名必须大于1个字符，小于21个字符!'"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

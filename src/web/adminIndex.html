@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon_index.js"></script>
+    <title>统一文件存储服务系统</title>
+    <script type="text/javascript" >
+        $(function() {
+            $('#passwordEditWindow').window('close');
+            $.ajax({
+                type: "post",
+                url: sy.data.url+"/webapi/admin/getCurrentUserInfo/",
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == 0) {
+                        sy.data.user_name =data.result.user;
+                        sy.data.login_name = data.result.user;
+                        sy.data.role_id = data.result.role;
+                        $('#welcome').html( '欢迎您,'+sy.data.user_name);
+                        if(sy.data.role_id==1&&sy.data.login_name=='sysadmin'){//根节点系统管理员
+                            $('#secMenu').menubutton('destroy');
+                            $('#logMenu').menubutton('destroy');
+                            openIndexPanel('管理平台>>应用管理','/pages/sysAdmin/appManagerView.html');
+                        }else if(sy.data.role_id==2&&sy.data.login_name=='secadmin'){//根节点安全保密管理员
+                            $('#sysMenu').menubutton('destroy');
+                            $('#logMenu').menubutton('destroy');
+                            openIndexPanel('管理平台>>应用服务器管理','/pages/secAdmin/appServerManage.html');
+                        }else if(sy.data.role_id==4&&sy.data.login_name=='logadmin'){//根节点安全审计管理员
+                            $('#sysMenu').menubutton('destroy');
+                            $('#secMenu').menubutton('destroy');
+                            openIndexPanel('管理平台>>管理员日志','/pages/logAdmin/adminLog.html');
+                        }else if(sy.data.role_id==1){//系统管理员
+                            $('#secMenu').menubutton('destroy');
+                            $('#logMenu').menubutton('destroy');
+                            //$('#layout_north_sysAdmin').menu('hideItem', $('#noticeMenu')[0]);
+//                            $('#layout_north_sysAdmin').menu('hideItem', $('#certPublic')[0]);
+                            openIndexPanel('管理平台>>账号管理','/pages/sysAdmin/accountManagerView.html');
+                        }else if(sy.data.role_id==2){//安全保密管理员
+                            $('#sysMenu').menubutton('destroy');
+                            $('#logMenu').menubutton('destroy');
+                            $('#layout_north_sysAdmin').menu('hideItem', $('#userLogMenu')[0]);
+                            openIndexPanel('管理平台>>应用服务器管理','/pages/secAdmin/appServerManage.html');
+                        }else if(sy.data.role_id==4){//安全审计管理员
+                            $('#sysMenu').menubutton('destroy');
+                            $('#secMenu').menubutton('destroy');
+                            $('#layout_north_sysAdmin').menu('hideItem', $('#adminLogMenu')[0]);
+                            openIndexPanel('管理平台>>管理员日志','pages/logAdmin/adminLog.html');
+                        }else if(sy.data.role_id==3&&sy.data.login_name=='admin'){//管理员
+
+                            openIndexPanel('管理平台>>账号管理','/pages/sysAdmin/accountManagerView.html');
+                        }
+                        //openIndexPanel('管理平台>>组织用户管理','pages/sysAdmin/userManagement.html');
+                    } else {
+                        var message = '错误代码:' + data.errcode + ',错误信息' + data.errmsg + '!';
+                        alert('查询错误:'+ message);
+                        //openIndexPanel('首页','main.html');
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    //openIndexPanel('首页','main.html');
+                }
+            });
+        })
+
+        function openSendMessageWindow(title,url,object){
+            object.window('clear');
+            object.append(sy.formatString('<iframe src="{0}" allowTransparency="true" style="border:0;width:100%;height:97%;" frameBorder="0"></iframe>', url));
+            object.window('open');
+        }
+
+        function openCenterPanel(title,url){
+            var panelTitle = "当前位置："+title;
+            //$("#centerPanel").panel({title:panelTitle});
+            $("#nav").html(title);
+            $('#centerPanel').panel('clear');
+            $('#centerPanel').append(sy.formatString('<iframe src="{0}" allowTransparency="true" style="border:0;width:100%;height:99%;" frameBorder="0"></iframe>', url));
+        }
+
+        function openIndexPanel(title,url){
+            var panelTitle = "当前位置："+title;
+            //$("#centerPanel").panel({title:panelTitle});
+            $("#nav").html(title);
+            $('#centerPanel').panel('clear');
+            $('#centerPanel').append(sy.formatString('<iframe src="{0}" allowTransparency="true" style="border:0;width:100%;height:99%;margin: 0 auto" frameBorder="0"; scrolling=no"></iframe>', url));
+        }
+
+        function logout(){
+            var url = window.location.protocol +"//"+ window.location.host+"/admin/"
+            $.ajax({
+                type: "post",
+                url: sy.data.url+"/webapi/admin/logout/",
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == 0) {
+                        window.location.href= url;
+                    }else {
+                        var message = '错误代码:' + data.errcode + ',错误信息' + data.errmsg + '!';
+                        alert('查询错误:'+ message);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+//                    window.location.href='adminLogin.html';
+                    window.location.href= url;
+                }
+            });
+        }
+
+    </script>
+</head>
+<body class="easyui-layout" style="width: 100%;height: 100%">
+<div data-options="region:'north',border:false" class="index-top-bg-color" style="height: 128px;width: 100%; overflow: hidden;">
+    <div class="index-title-bg" style="position: absolute;padding: 0px;margin: 0px;left: 0;top: 0;z-index: 99;width: 1024px;height: 80px">
+    </div>
+    <div class="index-title" style="position: absolute;padding: 0px;margin: 0px;left: 50px;top: 15px;z-index: 99;width: 517px;height: 46px">
+    </div>
+    <div style="position: absolute; right:10px; top:25px;width: 250px;z-index: 99;">
+        <div style="float:left;line-height: 32px;margin-right: 10px">
+        <div class="index-password" style="cursor:pointer" title="修改密码" onclick="openSendMessageWindow('修改密码','/pages/common/passwordEditWindow.html',$('#passwordEditWindow'))" ></div>
+        <span style="cursor: pointer;font-size: 16px;color: #057954" onclick="openSendMessageWindow('修改密码','/pages/common/passwordEditWindow.html',$('#passwordEditWindow'))" >修改密码</span>
+            </div>
+        <div  style="float:left;line-height: 32px;margin-right: 10px">
+        <div class="index-exit" style="cursor:pointer" title="注销" onclick="logout()" ></div>
+        <span style="cursor: pointer;font-size: 16px;color: #057954" onclick="logout()" >注销</span>
+            </div>
+    </div>
+    <div class="index-menu-bg-color" style="position: absolute; left: 0; bottom: 0;right: 10px;height: 48px;line-height: 48px;overflow:hidden;">
+        &nbsp;&nbsp;<span id="welcome" class="indexTop">欢迎你</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span id="nav" class="indexTop">当前位置：首页</span>
+
+    </div>
+    <div class="index-menu-bg-color" style="position: absolute; right: 0; bottom: 0;height: 48px;" >
+        <!--<div style="height:42px;line-height: 42px;overflow: hidden;float:left">-->
+            <!--<span id="welcome" class="indexTop">欢迎你</span> &nbsp;&nbsp;&nbsp;-->
+        <!--</div>-->
+        <div class="index-menu-icon" style="float: left;margin-right: 10px">
+
+            <a class="easyui-menubutton" style="height: 42px" data-options="menu:'#layout_north_sysAdmin',iconCls:'user-mini-send'" id="sysMenu">系统管理员</a>
+            <a class="easyui-menubutton" style="height: 42px" data-options="menu:'#layout_north_secAdmin',iconCls:'user-mini-message'" id="secMenu">安全保密管理员</a>
+            <a class="easyui-menubutton" style="height: 42px" data-options="menu:'#layout_north_logAdmin',iconCls:'user-mini-get'" id="logMenu">安全审计管理员</a>
+
+        </div>
+    </div>
+    <div id="layout_north_sysAdmin" class="index-menu-icon" style="width: 127px; display: none;">
+        <div data-options="" onclick="openCenterPanel('管理平台>>应用管理','/pages/sysAdmin/appManagerView.html')" title="应用管理">应用管理</div>
+        <!--<div data-options="" onclick="openCenterPanel('管理平台>>证书管理','/pages/sysAdmin/certManagerView.html')" title="证书管理">证书管理</div>-->
+        <div data-options="" onclick="openCenterPanel('管理平台>>账号管理','/pages/sysAdmin/accountManagerView.html')" title="账号管理" id="noticeMenu">账号管理</div>
+        <div data-options="" onclick="openCenterPanel('管理平台>>管理员日志','/pages/logAdmin/adminLog.html')" title="管理员日志" id="adminLogMenu">管理员日志</div>
+        <div data-options="" onclick="openCenterPanel('管理平台>>客户端操作日志','/pages/logAdmin/clientLog.html')" title="客户端操作日志" id="clintLogMenu">客户端操作日志</div>
+    </div>
+    <div id="layout_north_secAdmin" class="index-menu-icon" style="width: 157px; display: none;">
+        <div data-options="" onclick="openCenterPanel('管理平台>>应用服务器管理','/pages/secAdmin/appServerManage.html')" title="应用服务器管理">应用服务器管理</div>
+    </div>
+    <div id="layout_north_logAdmin" class="index-menu-icon" style="width: 157px; display: none;">
+
+    </div>
+
+    <div id="passwordEditWindow" class="easyui-window" data-options="modal:true,iconCls:'document_new',collapsible:false,minimizable:false,maximizable:false,resizable:false,draggable:true,title:'修改密码'" style="width: 520px;height: 220px" ></div>
+
+</div>
+<div data-options="region:'south'" class="index-bottom-bg-color" style="height: 37px; overflow: hidden;text-align: center;">
+    <table style="width: 100%;height: 100%;text-align: center;vertical-align: middle" >
+        <tr>
+            <td><span class="indexfooter">统一文件存储服务系统 © 2006-2016版权所有 </span></td>
+        </tr>
+    </table>
+
+</div>
+<div id="centerPanel" data-options="region:'center'" ></div>
+
+</body>
+</html>

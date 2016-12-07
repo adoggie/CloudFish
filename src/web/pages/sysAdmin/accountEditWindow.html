@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="../../static/js/pages/sysAdmin/accountEditWindow.js" charset="utf-8"></script>
+
+    <title>账号信息</title>
+</head>
+<body>
+<form id="accForm" method="post" class="form">
+
+    <table class="table" style="width: 100%;height: 100%;">
+        <tr>
+            <th style="text-align: left">账号名称：</th>
+            <td> <input id="name" class="easyui-textbox" style="width: 120px" data-options="required:true,validType:['isBlank','length[0,40]'],invalidMessage:'不能超过40个字符,且不能为空！'" /></td>
+             <th style="text-align: left">应用名称：</th>
+            <td><input id="app_name" class="easyui-combobox" style="width:120px" data-options="required:true,valueField:'id',textField:'name',panelHeight:'80px',editable:false" /></td>
+        </tr>
+        <tr id="changePassword">
+            <th style="text-align: left">密码：</th>
+            <td><input class="easyui-textbox" style="width: 120px" id="newpasswd" type="password" data-options="required:true,validType:['length[4,20]'],invalidMessage:'密码长度必须在3和21之间!' " /></td>
+            <th style="text-align: left">重复密码：</th>
+            <td> <input class="easyui-textbox" style="width: 120px" id="newpasswdAgain" type="password" data-options="required:true,validType:'eqPwd[\'#newpasswd\']'" /></td>
+        </tr>
+        <tr>
+            <th style="text-align: left">姓名：</th>
+            <td>
+                <input id="username" class="easyui-textbox" style="width: 120px" data-options="required:true,validType:['isBlank','length[0,20]'],invalidMessage:'不能超过20个字符,且不能为空！'" /></td>
+            </td>
+            <th style="text-align: left">电话：</th>
+            <td> <input id="phone" class="easyui-textbox" style="width: 120px" data-options="validType:'phoneAndMobile'" /></td>
+        </tr>
+        <tr>
+            <th style="text-align: left">地址：</th>
+            <td >
+                <input id="address" class="easyui-textbox" style="width: 120px" data-options="validType:['length[0,80]'],invalidMessage:'不能超过80个字符！'" />
+
+            </td>
+            <th style="text-align: left">是否启用：</th>
+            <td >
+                <input type="radio" value="1" name="acc_status" checked="checked">启用
+                <input type="radio" value="2" name="acc_status" >禁用
+
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: left" id="th_file_size">文件大小：</th>
+            <td colspan="3"><span id="file_size"></span></td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: right">
+                <a href="#" class="easyui-linkbutton" style="width: 58px"  onclick="saveAccount()" >保存</a>
+                <a href="#" class="easyui-linkbutton" style="width: 58px"  onclick="closeWindow()" >关闭</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>

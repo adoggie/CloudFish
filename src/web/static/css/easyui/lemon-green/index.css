@@ -1,0 +1,114 @@
+/*左上角标题背景*/
+.index-title-bg{
+    background-image: url('index/title-bg.jpg');
+}
+/*左上角标题*/
+.index-title{
+    background-image: url('index/title.png');
+}
+/**首页图片*/
+.index-home{
+    background-image: url('index/index_1.png');
+    width: 36px;
+    height: 36px;
+    float:left;
+    margin-right: 10px;
+}
+
+/*修改密码图片*/
+.index-password{
+    background-image: url('index/password_1.png');
+    width: 36px;
+    height: 36px;
+    float:left;
+    margin-right: 10px;
+}
+
+/*管理与帮助图片*/
+.index-manager{
+    background-image: url('index/manager_1.png');
+    width: 36px;
+    height: 36px;
+    float:left;
+    margin-right: 10px;
+}
+
+/*注销图片*/
+.index-exit{
+    background-image: url('index/exit_1.png');
+    width: 36px;
+    height: 36px;
+    float:left;
+    margin-right: 10px;
+}
+
+/*上面部分的总体背景颜色*/
+.index-top-bg-color{
+    background-color: #cdf0de;
+}
+/*菜单栏背景颜色*/
+.index-menu-bg-color{
+    background-color: #057951;
+}
+
+/*底部的总体背景颜色*/
+.index-bottom-bg-color{
+    background-color:#057953;
+}
+
+.l-btn{
+    border:1px solid #057953;
+    background:linear-gradient(to bottom,#057953 0,#057953 100%);
+}
+
+
+.main-user-bg{
+    background-image: url('index/user_bg.jpg');
+}
+
+.main-draftBox-bg{
+    background-image: url('index/draftBox.jpg');
+}
+
+.main-document-bg{
+    background: url('index/noreaddocument.jpg');
+}
+
+.main-message-bg{
+    background-image: url('index/message.jpg');
+}
+
+.main-calendar-bg{
+    background-image: url('index/calendar.png');
+}
+
+.main-noteList-bg{
+    background-image: url('index/noteList.jpg');
+}
+
+.main-relayApply-bg{
+    background-image: url('index/relayApply.jpg');
+}
+
+.main-printApprove-bg{
+    background-image: url('index/printApprove.jpg');
+}
+
+.main-todowork-bg{
+    background-image: url('index/todoworkbg.jpg');
+}
+
+.main-document_big-bg{
+    background: url('index/document_big.jpg');
+}
+
+.main-message_big-bg{
+    background: url('index/message_big.jpg');
+}
+
+/*待办审批 刷新*/
+.main-refresg-bt{
+    background-image: url('index/refresh.png');
+    width: 28px;
+    height: 28px;
+}

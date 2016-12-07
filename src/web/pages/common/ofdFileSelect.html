@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Suwell OFD Reader FireFox Plugin</title>
+	<script type="text/javascript" src="/static/js/suwellnpapi/suwell_npapi.js" charset="UTF-8"></script>
+</head>
+
+<!--
+菜单栏对应的ID
+"menu"     					针对整个菜单栏
+"menu_file"					文件菜单项
+"menu_document"				文档菜单项
+"menu_view" 				视图菜单项
+"menu_tool" 				工具菜单项
+"menu_windows" 				窗口菜单项
+"menu_help"					帮助菜单项
+
+工具栏对应的ID
+"toolbar_file"				文件工具栏
+"toolbar_view"				视图工具栏
+"toolbar_operat"			文档操作工具栏
+"toolbar_documentview"		文档视图工具栏
+"toolbar_signature"			签章工具栏
+"navigator"					"导航栏"
+
+各个工具项对应的ID
+"open"     					"打开"
+"save" 						"保存"
+"print"						"打印"
+"zoom_in" 					"放大"
+zoom_out" 					"缩小"
+"full_screen" 				"全屏显示"
+"zoom_original" 			"原始大小"
+"zoom_fitwidth" 			"适合宽度"
+"rotate_clock" 				"顺时针旋转90°"
+"rotate_anti" 				"逆时针旋转90°"
+"pagelayout_singlepage" 	"单页"
+"pagelayout_singleflow" 	"单页连续"
+"find_text" 				"查找文本"
+"toolstate_textselect" 		"文本选择"
+toolstate_handtool" 		"手型工具"
+"frist_page" 				"第一页"
+"previous_page" 			"前一页"
+"next_page" 				"下一页"
+"last_page" 				"最后一页"
+"annot_sealsign" 			"印章签名"
+"tool_stamp" 				"橡皮图章"
+-->
+
+<script type="text/javascript">
+	var ocx;
+	function load()
+	{
+		ocx = suwell.ofdReaderInit("FireFoxOFDDIV","auto","auto");
+		if (ocx)
+		{
+			ocx.setCompsiteVisible([ "menu","navigator" ], false);
+			var file = getUrlParam('file')
+			ocx.openFile(file);
+		}
+	};
+
+	function getUrlParam(name){
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if(r != null){
+			return unescape(r[2]);
+		}else{
+			return null; //返回参数值
+		}
+	};
+
+	function openFile()
+	{
+		//ocx.openFile("http://172.16.8.55/tudizheng.ofd");
+		ocx.openFile("/root/Desktop/aaa.ofd");
+		//ocx.setPrintCopies(5);
+		//ocx.setReaderMode(2);
+		//ocx.setCallback("print","printPerforming",true);
+
+	}
+
+	function printPerforming(param)
+	{
+		alert(param);
+		//ocx.printFile(2);
+	}
+
+	function saveFile()
+	{
+		ocx.saveFile("http://172.16.8.55:8080/cpcns-convert-server/upload");
+	}
+
+	function closeFile()
+	{
+		ocx.closeFile();
+	}
+
+</script>
+
+<body onload="load()">
+<div id="FireFoxOFDDIV">
+</div>
+
+<div id="buttonDiv">
+	<input type="button" value="打开" onclick="openFile();" />
+	<input type="button" value="保存" onclick="saveFile();" />
+	<input type="button" value="关闭" onclick="closeFile();" />
+</div>
+</body>
+
+</html>

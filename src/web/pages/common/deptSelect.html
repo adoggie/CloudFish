@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/common/deptSelect.js" ></script>
+    <!-- 部门选择-->
+    <title>请从组织结构树上选中单位</title>
+
+</head>
+<body class="easyui-layout" >
+    <div data-options="region:'west'" style="width: 250px; padding: 10px;">
+        <div style="width: 100%">
+            <input class="easyui-textbox" style="width:120px;" id="name" />&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" onclick="searchTree()" style="width:58px">查询</a>
+        </div>
+        <!--TODO 树 -->
+        <ul id="deptTree"></ul>
+    </div>
+    <div data-options="region:'center'" style="width: 100%" >
+        <table style="height: 100%;vertical-align: middle;text-align: center">
+            <tr>
+                <td style="width: 100%">
+                    <p><a href="#" class="easyui-linkbutton"  onclick="getCheckedNode()" style="width:58px">添加</a></p>
+                    <p><a href="#" class="easyui-linkbutton" onclick="deleteGridCheckedRows()" style="width:58px">删除</a></p>
+                    <p><a href="#" class="easyui-linkbutton" onclick="clearGrid()" style="width:58px">清空</a></p>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div data-options="region:'east'" style="width: 272px"  >
+        <table id="deptTable" class="easyui-datagrid" style="width:100%;height:100%" >
+
+        </table>
+        <div id="ft" style="padding:2px 5px;text-align: right">
+            <a href="#" class="easyui-linkbutton" style="width: 58px" onclick="sendDept()" >确定</a>
+            <a href="#" class="easyui-linkbutton" style="width: 58px" onclick="closeWindow()" >关闭</a>
+        </div>
+    </div>
+</body>
+</html>

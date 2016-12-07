@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../../static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="../../static/js/pages/logAdmin/clientLog.js" ></script>
+    <title>用户客户端操作日志</title>
+</head>
+<body class="easyui-layout">
+
+<div data-options="region:'center'" style="width: 50%" >
+    <div id="adminLog_toolbar" style="text-align: right;padding:0;margin: 0">
+        <table class="table" style="width: 100%">
+            <tr>
+                <th>开始时间：</th>
+                <td><input id="start_time" type="text" class="easyui-datebox" data-options="editable:false,buttons:sy.databoxbtn" style="width:180px;"/></td>
+                <th>结束时间：</th>
+                <td><input id="end_time" type="text" class="easyui-datebox" data-options="editable:false,buttons:sy.databoxbtn" style="width:180px;"/></td>
+                <th>操作对象：</th>
+                <td><input id="target" class="easyui-textbox" style="width:180px;"/></td>
+                <th>日志类型：</th>
+                <td>
+                    <a href="#" onclick="showAdminLogTypeWindow()">选择</a>
+                </td>
+            </tr>
+            <tr>
+                <th>操作人角色：</th>
+                <td>
+                    <select id="user_role" class="easyui-combobox" style="width:100px;" data-options="panelHeight:'auto',editable:false">
+                        <option value="">全部</option>
+                        <option value="1">服务器</option>
+                        <option value="2">客户端</option>
+                    </select>
+                </td>
+                <th>操作结果：</th>
+                <td>
+                    <select id="result" class="easyui-combobox" style="width: 100px" data-options="panelHeight:'auto',editable:false" >
+                        <option value="" >--所有--</option>
+                        <option value="0" >成功</option>
+                        <option value="1" >失败</option>
+                    </select>
+                </td>
+
+                <th>日志内容：</th>
+                <td colspan="3" >
+                    <input id="detail" class="easyui-textbox" />
+                    <a href="#" class="easyui-linkbutton" onclick="searchAdminLog()">查询</a>
+                    <a href="#" class="easyui-linkbutton" onclick="exportAdminOperationLog()">导出日志</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table id="clientLog" style="height: 70%">
+
+    </table>
+</div>
+<div id="adminLogTypeWindow" title="日志类型" class="easyui-window" data-options="iconCls:'',modal:true,collapsible:false,minimizable:false,maximizable:false,resizable:false,draggable:true,closable:true,closed:true"
+     style="width: 450px;height: 140px" >
+    <table>
+        <tr>
+            <td>
+                <input id="CLIENT_USER_LOGIN" name="adminLog" value="101" type="checkbox"/>
+                <a>客户端用户登录</a>
+            </td>
+            <td>
+                <input id="CLIENT_USER_LOGOUT" name="adminLog" value="102" type="checkbox"/>
+                <a>客户端用户登出</a>
+            </td>
+            <td>
+                <input id="CLIENT_USER_CREATE_FILE" name="adminLog" value="201" type="checkbox"/>
+                <a>客户端用户创建文件</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="CLIENT_USER_GET_FILE" name="adminLog" value="202" type="checkbox"/>
+                <a>客户端用户获取文件</a>
+            </td>
+            <td>
+                <input id="CLIENT_USER_DELETE_FILE" name="adminLog" value="203" type="checkbox"/>
+                <a>客户端用户删除文件</a>
+            </td>
+            <td>
+                <input id="CLIENT_USER_SHARE_FILE" name="adminLog" value="204" type="checkbox"/>
+                <a>客户端用户共享文件</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="7" style="text-align: right">
+                <a href="#" class="easyui-linkbutton" onclick="closeAdminLogTypeWindow()" style="width: 58px">确定</a>
+                <a href="#" class="easyui-linkbutton" onclick="clearAdminLogType()" style="width: 58px">重置</a>
+                <!--<a href="#" class="easyui-linkbutton" onclick="selectAdminLogType()" data-options="iconCls:'icon-search'">全选</a>-->
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

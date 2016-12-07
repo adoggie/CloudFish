@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="../../static/js/pages/sysAdmin/appEditWindow.js" charset="utf-8"></script>
+
+    <title>应用信息</title>
+</head>
+<body>
+<form id="appForm" method="post" class="form">
+
+    <table class="table" style="width: 100%;height: 100%;">
+        <tr>
+            <th style="text-align: left" >应用名称：</th>
+            <td> <input id="name" class="easyui-textbox" style="" data-options="required:true,validType:['length[0,40]'],invalidMessage:'不能超过40个字符！'" /></td>
+            <th style="text-align: left">应用标识：</th>
+            <td> <input id="app_id" class="easyui-textbox" style="" data-options="required:true,validType:['length[0,40]'],invalidMessage:'不能超过40个字符！'" /></td>
+        </tr>
+        <tr>
+            <th style="text-align: left">是否启用：</th>
+            <td>
+                <input type="radio" value="1" name="app_status" checked="checked">启用
+                <input type="radio" value="2" name="app_status" >禁用
+
+            </td>
+            <th style="text-align: left" id="th_file_size">文件大小：</th>
+            <td colspan="3"><span id="file_size"></span></td>
+        </tr>
+         <tr>
+            <th style="text-align: left">访问令牌：</th>
+            <td colspan="3"><span id="access_token"></span></td>
+
+        </tr>
+        <tr>
+            <th style="text-align: left">访问口令：</th>
+            <td colspan="3"><span id="secret_key"><a href="#" style="color:#007fae" onclick="viewsecret_key()">点击查看</a></span></td>
+        </tr>
+        <tr>
+            <th style="text-align: left">应用说明：</th>
+            <td colspan="3">
+                <input id="comment" class="easyui-textbox" style="width: 70%;height:60px" data-options="multiline:true,validType:['length[0,200]'],invalidMessage:'不能超过1300个字符！'" style="width: 70%;height: 60px" />
+                <input id="hidden" type="hidden"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: right">
+                <a href="#" class="easyui-linkbutton" style="width: 58px"  onclick="saveApp()" >保存</a>
+                <a href="#" class="easyui-linkbutton" style="width: 58px"  onclick="closeWindow()" >关闭</a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

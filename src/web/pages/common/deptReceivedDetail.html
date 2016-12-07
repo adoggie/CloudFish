@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/common/deptReceivedDetail.js" charset="utf-8"></script>
+    <title>单位接收详情</title>
+</head>
+<body>
+<table class="table" style="width: 100%">
+    <tr>
+        <th width="20%">收文单位：</th>
+        <td width="30%"><span id="receive_unit"></span></td>
+        <th width="20%">收文人员：</th>
+        <td WIDTH="30%"><span id="receiver"></span></td>
+    </tr>
+    <tr>
+        <th>收文份数：</th>
+        <td><span id="print_count"></span></td>
+        <th>转发份数：</th>
+        <td><span id="relay_count"></span></td>
+    </tr>
+    <tr>
+        <th>已打印数：</th>
+        <td><span id="printed_count"></span></td>
+        <th>已转发数：</th>
+        <td><span id="relayed_count"></span></td>
+    </tr>
+    <tr>
+        <th>接收情况：</th>
+        <td><span id="receive_status"></span></td>
+        <th>收文时间：</th>
+        <td><span id="receive_time"></span></td>
+    </tr>
+    <tr>
+        <th>催办情况：</th>
+        <td><span id="is_hasten"></span></td>
+        <th>打印控制：</th>
+        <td><span id="reprint_need_approve"></span></td>
+    </tr>
+    <tr>
+        <th>联系方式：</th>
+        <td><span id="receiver_phone"></span></td>
+        <th>下载控制：</th>
+        <td><span id="can_downlaod"></span></td>
+    </tr>
+    <tr>
+        <th>回执情况：</th>
+        <td><span id="feedback_status"></span></td>
+        <th>转发控制：</th>
+        <td><span id="relay_need_approve"></span></td>
+    </tr>
+</table>
+<table id="readList" class="easyui-datagrid" style="height: 200px"  >
+
+</table>
+<div id="receiptView" style="width: 100%">
+    <table style="width: 100%">
+        <tr>
+            <th style="width: 20%" ><span id="fb_attend_count_th">会议人数：</span></th>
+            <td style="width: 30%" ><span id="fb_attend_count"></span></td>
+        </tr>
+        <tr id="fb_description_tr">
+            <th style="width: 20%">回执内容：</th>
+            <td style="width: 80%" colspan="3"><span id="fb_description" style="word-warp:break-word;word-break:break-all"></span></td>
+        </tr>
+        <tr id="joinTable_tr">
+            <td colspan="4" style="width: 100%">
+                    <table id="joinTable" style="width: 100%">
+
+                    </table>
+
+
+        </tr>
+    </table>
+</div>
+<div id="ft" style="padding:2px 5px;text-align: right">
+    <a href="#" class="easyui-linkbutton" onclick="closeWindow()" style="width: 62px" >关闭</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/messageManagement/sendMessageWindow.js" charset="utf-8"></script>
+    <title>新建消息</title>
+</head>
+<body>
+    <form id="form" >
+        <table class="table" style="width: 100%">
+            <tr style="height:200px;vertical-align: top">
+                <th style="width: 35%">接收单位：</th>
+                <td style="width: 65%">
+                    发文单选择：<input id="receiverSel" class="easyui-combobox" data-options="valueField:'receiver_list_id',textField:'receiver_list_name',editable:false,panelHeight:'auto',onSelect:getReceiverDetail" style="width:140px" />
+                    <a href="#" class="easyui-linkbutton" onclick="showDeptWindow()" >添加单位</a>
+                    <br>
+                    <div id="sendDept" class="easyui-panel" data-options="border:false">
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>发文单位：</th>
+                <td>
+                    <select id="issue_id" class="easyui-combobox" data-options="valueField:'id',textField:'fullname',panelHeight:'auto',editable:false,required:true" style="width:200px;">
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>主题：</th>
+                <td> <input id="title" class="easyui-textbox" style="width: 200px" data-options="required:true,validType:['length[2,159]'],invalidMessage:'主题长度需在1到160之间！'" /></td>
+            </tr>
+            <tr>
+                <th>内容：</th>
+                <td><input id="content" class="easyui-textbox" style="height: 150px;width: 200px" data-options="multiline:true,required:true,validType:['length[0,500]'],invalidMessage:'内容不能超过500个字符！'" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right">
+                    <a href="#" class="easyui-linkbutton" onclick="sendMessage()" style="width: 58px" >发送</a>
+                    <a href="#" class="easyui-linkbutton" onclick="closeWindow()" style="width: 58px" >关闭</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="deptSelectWindow" class="easyui-window" data-options="modal:true,iconCls:'document_new',collapsible:false,minimizable:false,maximizable:false,resizable:false,draggable:true,title:'请从组织结构树上选中单位',closed:true" style="width: 600px;height: 400px" ></div>
+
+</body>
+</html>

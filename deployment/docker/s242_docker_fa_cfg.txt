@@ -1,0 +1,3 @@
+
+host 172.16.10.242
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:0B

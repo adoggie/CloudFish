@@ -1,0 +1,61 @@
+
+mongodb:
+  host: server1
+  port: 27017
+  user:
+  passwd:
+  database: sns
+
+redis:
+  host: localhost
+  port:
+  user:
+  passwd:
+
+postgresql:
+  host: 172.16.10.64 
+  port: 5432
+  user: postgres
+  passwd: 111111
+
+fileserver:
+  http:
+    host: 127.0.0.1
+    port: 8089
+    ssl: false
+    keyfile:
+    certfile:
+  mongodb: mongodb
+  postgresql: postgresql
+  redis: redis
+
+
+encrypt_server_agent:
+  http:
+    host: 127.0.0.1
+    port: 8091
+    ssl: false
+    url: "http://127.0.0.1/api/fileserver/create"
+
+cloudfish_server:
+  http:
+    host: 172.16.10.64
+    port: 8088
+    ssl: false
+    keyfile: /home/ssl/server.key
+    certfile: /home/ssl/server.crt
+  mongodb:  mongodb
+  postgresql: postgresql
+  redis: redis
+  gws_url: ws://192.168.10.100:14002
+  license: /home/projects/cloudfish/libs/fa64
+  default_cert_type: 1
+  default_cert_passwd: "123456"
+  tmpdir: /home/tmp
+  storage_server: http://localhost:8091/
+  swift_auth_server: http://172.16.10.60:5000/v2.0/
+  swift_tenant_name: admin
+  swift_username: admin
+  swift_password: "111111"
+  encrypt_enable: false
+

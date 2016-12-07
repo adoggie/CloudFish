@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/static/js/common/lemon.js"></script>
+    <script type="text/javascript" src="/static/js/pages/messageManagement/messageTabDetailView.js" charset="utf-8"></script>
+
+    <title></title>
+</head>
+<body>
+    <div class="easyui-panel" style="width: 100%" data-options="border:false" >
+        <table width="100%">
+            <tr>
+                <th width="20%">发送人：</th>
+                <td width="30%"><span id="issue_user_name"></span></td>
+                <th width="20%">发送时间：</th>
+                <td width="30%"><span id="issue_time"></span></td>
+            </tr>
+            <tr>
+                <th>主题：</th>
+                <td><span id="title"></span></td>
+                <th>发送单位：</th>
+                <td>
+                    <span id="issue_unit"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>内容</th>
+                <td colspan="3" style="width: 200px">
+                    <span id="content" style="word-warp:break-word;word-break:break-all"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr width="100%" />
+        <form id="form">
+            <table style="height: 100%;width: 100%">
+                <tr>
+                    <th>主题：</th>
+                    <td> <input id="re_title" class="easyui-textbox" style="width: 150px" data-options="required:true,validType:['length[1,159]'],invalidMessage:'长度在1到160之间'" /></td>
+                </tr>
+                <tr>
+                    <th>内容：</th>
+                    <td><input id="re_content" class="easyui-textbox" style="height:200px;width: 150px" data-options="multiline:true,required:true,validType:['length[0,500]'],invalidMessage:'内容不能超过500个字符！'" /></td>
+                </tr>
+
+            </table>
+        </form>
+        <div id="ft" style="padding:5px;text-align: right;">
+            <a href="#" class="easyui-linkbutton" onclick="replyMessage()"  >回复</a>
+        </div>
+</body>
+</html>
