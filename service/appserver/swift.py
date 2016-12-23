@@ -42,6 +42,8 @@ class SwiftServer:
 		user = user
 		key = key
 		tenant_name = tenant
+		if self.conn:
+			return self.conn
 		try:
 			self.conn = sw.client.Connection(
 				authurl=authurl,
@@ -57,6 +59,12 @@ class SwiftServer:
 
 	def handle(self):
 		return self.conn
+	
+	def reset(self):
+		self.conn = None
+
+def reset_swift_connection():
+	SwiftServer.instance().reset()
 
 def get_swift_connection():
 	from  lemon.utils.app import BaseAppServer
@@ -65,7 +73,7 @@ def get_swift_connection():
 	user = conf.get('swift_username')
 	key  = conf.get('swift_password')
 	tenant = conf.get('swift_tenant_name')
-	conn = SwiftServer().open(authurl,user,key,tenant)
+	conn = SwiftServer.instance().open(authurl,user,key,tenant)
 	return conn
 
 def create_application(app_id,should_hash=False):
