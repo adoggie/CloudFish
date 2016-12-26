@@ -276,7 +276,8 @@ def get_file(request):
 		wrapper = FileWrapper(fp)
 		content_type = mimetypes.guess_type(auf.file_name)[0]
 		response = StreamingHttpResponse(wrapper, content_type=content_type)
-		response['Content-Disposition'] = u"attachment; filename=%s" % auf.file_name
+		#response['Content-Disposition'] = u"attachment; filename=%s" % auf.file_name
+		response['Content-Disposition'] = u"attachment; filename=_unkown_file_" 
 		return response
 	except:
 		traceback.print_exc()
